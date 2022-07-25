@@ -1,4 +1,4 @@
-# quiz-app
+# movie-app
 
 ## Project setup
 ```

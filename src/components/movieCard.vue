@@ -2,7 +2,7 @@
     <div id="movie-card">
         <img :src="imgUrl+movie.backdrop_path" class="movie-img"/>
         <div class="text">
-            <div class="title">
+            <div class="title" @click="pushToMovieDetails(movie.id)">
                 <!-- <h5 v-if="movie.media_type">{{ movie.title }} ({{movie.release_date}})</h5> -->
                 <h5 v-if="!movie.media_type || movie.media_type == 'movie'">{{ movie.title }} ({{ getFullYear(movie.release_date) }})</h5>
                 <h5 v-else>{{ movie.name }} ({{ getFullYear(movie.first_air_date) }})</h5>
@@ -33,6 +33,12 @@ export default {
     methods: {
         getFullYear: function (date) {
             return convertToYear(date)
+        },
+        pushToMovieDetails(id) {
+            this.$router.push({
+                name: 'Movie Details',
+                params: {id}
+            })
         }
     }
 }
@@ -52,6 +58,10 @@ export default {
     .title {
         h5 {
             height: 20px;
+            cursor: pointer;
+            &:hover {
+                color: #ff6161
+            }
         }
     }
 

@@ -2,12 +2,7 @@
   <div id="container">
     <nav>
       <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/categories">Categories</router-link></li>
-        <li><router-link to="/trending">Trending</router-link></li>
-        <li><router-link to="/top-rated">Top Rated</router-link></li>
-        <li><router-link to="/popular">Popular</router-link></li>
-        <li><router-link to="/upcoming">Upcoming</router-link></li>
+        <li v-for="link in links" :key="link.link"><router-link :class="router == link.link? 'active': ''" :to="link">{{link.name}}</router-link></li>
       </ul>
     </nav>
     <router-view />
@@ -15,9 +10,49 @@
 </template>
 
 <script>
+import movieListVue from './components/movieList.vue'
+import movieComponent from './views/Movie-Component.vue'
 
 export default {
-  
+  components: {
+    movieListVue,
+    movieComponent
+  },
+  data() {
+    return {
+      links: [
+        {
+          name: 'Home',
+          link: '/'
+        },
+        {
+          name: 'Categories',
+          link: '/categories'
+        },
+        {
+          name: 'Trending',
+          link: '/trending'
+        },
+        {
+          name: 'Top Rated',
+          link: '/top-rated'
+        },
+        {
+          name: 'Popular',
+          link: '/popular'
+        },
+        {
+          name: 'Upcoming',
+          link: '/upcoming'
+        },
+      ]
+    }
+  },
+  computed: {
+    router() {
+      return this.$route.path
+    }
+  },
 }
 </script>
 
@@ -42,6 +77,9 @@ export default {
     padding-bottom: 0 !important;
     li {
       margin-left: 10px;
+      a.active {
+        color: #fe6c6c
+      }
       &:first-of-type {
         margin-left: 0;
       }

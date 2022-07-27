@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <movie-list-vue :keyword="'/trending/all/week'" :numberOfMovies="6" :heading="'Trending this week'" />
-        <movie-list-vue :keyword="'/movie/top_rated'" :numberOfMovies="6" :heading="'Top Rated Movies'" />
-        <movie-list-vue :keyword="'/trending/all/day'" :numberOfMovies="6" :heading="'Trending today'" />
-        <movie-list-vue :keyword="'/movie/popular'" :numberOfMovies="6" :heading="'Popular Movies'" />
-        <movie-list-vue :keyword="'/movie/upcoming'" :numberOfMovies="6" :heading="'Upcoming Movies'" />
-    </div>
+  <div>
+    <movie-list-vue :showMoreRoute="'/trending'" :keyword="'/trending/all/week'" :numberOfMovies="6" :heading="'Trending this week'" />        
+    <movie-list-vue :showMoreRoute="'/trending'" :keyword="'/trending/all/day'" :numberOfMovies="6" :heading="'Trending today'" />
+    <movie-list-vue :showMoreRoute="'/top-rated'" :keyword="'/movie/top_rated'" :numberOfMovies="6" :heading="'Top Rated Movies'" />
+    <movie-list-vue :showMoreRoute="'/popular'" :keyword="'/movie/popular'" :numberOfMovies="6" :heading="'Popular Movies'" />
+    <movie-list-vue :showMoreRoute="'/upcoming'" :keyword="'/movie/upcoming'" :numberOfMovies="6" :heading="'Upcoming Movies'" />
+  </div>
 </template>
 
 <script>
-import movieListVue from './../components/movieList.vue'
+import movieListVue from '@/components/movieList.vue'
 
 export default {
   components: {

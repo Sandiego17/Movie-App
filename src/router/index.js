@@ -1,12 +1,42 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeComponent from './../views/Home-Component.vue'
+// import HomeComponent from './../views/Home-Component.vue' //not Jerry's codes
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomeComponent
+    component: () => import("./../views/Home-Component.vue")
   },
+  {
+    path: '/trending',
+    name: 'Trending',
+    component: () => import("./../views/Trending.vue")
+  },
+  {
+    path: '/categories',
+    name: 'Categories',
+    component: () => import("./../views/Trending.vue")
+  },
+  {
+    path: '/top-rated',
+    name: 'Top Rated',
+    component: () => import("./../views/Top-Rated.vue")
+  },
+  {
+    path: '/upcoming',
+    name: 'Upcoming',
+    component: () => import("./../views/Upcoming.vue")
+  },
+  {
+    path: '/popular',
+    name: 'Popular',
+    component: () => import("./../views/Popular.vue")
+  },
+  {
+    path: '/movie-details/:id',
+    name: 'Movie Details',
+    component: () => import("./../views/Movie-Component.vue")
+  }
 ]
 
 const router = createRouter({
